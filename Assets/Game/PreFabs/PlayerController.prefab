@@ -108,10 +108,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0, y: 0.5, z: 1}
-  ShoulderOffset: {x: 0, y: 0, z: 0}
+  ShoulderOffset: {x: 1, y: 0, z: 0}
   VerticalArmLength: 0.4
   CameraSide: 1
-  CameraDistance: 5
+  CameraDistance: 4.45
   CameraCollisionFilter:
     serializedVersion: 2
     m_Bits: 128
@@ -145,7 +145,7 @@ Transform:
   m_GameObject: {fileID: 1989620511903778920}
   serializedVersion: 2
   m_LocalRotation: {x: 0.33535472, y: -0.009612636, z: 0.003422001, w: 0.94203675}
-  m_LocalPosition: {x: 0, y: 2.9077282, z: -2.396946}
+  m_LocalPosition: {x: 0.9999476, y: 2.810788, z: -4.331133}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 1613136504765500968}
   m_Lens:
-    FieldOfView: 65
+    FieldOfView: 60
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 500
@@ -183,6 +183,13 @@ MonoBehaviour:
     GateFit: 2
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -265,13 +272,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8870557745727562600}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15613791, y: -0, z: -0, w: 0.9877353}
+  m_LocalRotation: {x: 0.078459114, y: 0, z: 0, w: 0.99691737}
   m_LocalPosition: {x: 0, y: 1.71, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6746183003199092593}
-  m_LocalEulerAnglesHint: {x: 17.966, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 9, y: 0, z: 0}
 --- !u!1001 &4588970174701016342
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -305,8 +312,12 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1976196358298176473, guid: 42af9444b6b5d4ba99a9cbd26af60030, type: 3}
+      propertyPath: MaxSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976196358298176473, guid: 42af9444b6b5d4ba99a9cbd26af60030, type: 3}
       propertyPath: JumpHeight
-      value: 1.2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1976196358298176473, guid: 42af9444b6b5d4ba99a9cbd26af60030, type: 3}
       propertyPath: MaxAirSpeed
