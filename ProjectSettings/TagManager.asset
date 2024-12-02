@@ -11,6 +11,11 @@ TagManager:
   - FxTemporaire
   - numberfloor
   - EventManager
+  - MathOperation
+  - MathBall
+  - OpBall
+  - ball
+  - UI
   layers:
   - Default
   - TransparentFX
