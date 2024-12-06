@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     inputActions = new InputActions();
     inputActions.Enable();
     RefreshOnScreenControls();
-    // GameEventManager.instance.OnButtonActionPressedHandler += ActionButtonPressed;
   }
 
   private void OnValidate()
@@ -38,7 +37,7 @@ public class PlayerController : MonoBehaviour
   {
     var moveInput = inputActions.Game.Move.ReadValue<Vector2>();
     var wantsToJump = inputActions.Game.Jump.WasPressedThisFrame();
-    var actionInput = inputActions.Game.Action.WasPressedThisFrame();
+    // var actionInput = inputActions.Game.Action.WasPressedThisFrame();
 
     // if (actionInput)
     // {
@@ -60,8 +59,5 @@ public class PlayerController : MonoBehaviour
     cameraController.IncrementLookRotation(new Vector2(look.y, look.x));
   }
 
-  // private bool ActionButtonPressed()
-  // {
-  //   return true;
-  // }
+
 }

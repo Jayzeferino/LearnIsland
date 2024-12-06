@@ -8,33 +8,54 @@ using UnityEngine.UI;
 
 public class SelectionManager : MonoBehaviour
 {
-    public GameObject farm;
+
+    public static SelectionManager Instance { get; set; }
+    public bool onTarget;
     [SerializeField] private GameObject interactionInfoUi;
     [SerializeField] private GameObject actionButton;
+    GameObject selectionIcon;
+    GameObject selectionIconInstantiate;
+    private void Start()
+    {
+        selectionIcon = Resources.Load<GameObject>("UiPrefabs/Sinal");
+        selectionIconInstantiate = Instantiate(selectionIcon, new Vector3(0, -50, 0), Quaternion.Euler(180, 0, 0));
+        selectionIconInstantiate.SetActive(false);
 
-    // private TextMeshPro interactionText;
-
-    // private void Start()
-    // {
-    //     interactionText = interactionInfoUi.transform.GetChild(0).GetComponent<TMP_Text>();
-    // }
+    }
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
     void Update()
     {
+
         Vector3 origin = transform.position;
         if (Physics.SphereCast(origin, 0.5f, transform.forward, out RaycastHit hit, 3f))
         {
             var selectionTransform = hit.transform;
-            if (hit.transform.GetComponent<InteractableObject>() && hit.transform.GetComponent<InteractableObject>().playerInRange == true)
+
+            InteractableObject ourInteractable = selectionTransform.GetComponent<InteractableObject>();
+
+            if (ourInteractable && ourInteractable.playerInRange == true)
             {
-                var text = hit.transform.GetComponent<InteractableObject>().GetItemName();
+                // selectionIconInstantiate = Instantiate(selectionIcon, ourInteractable.transform.position + new Vector3(0, 2, 0), Quaternion.Euler(180, 0, 0));
+                selectionIconInstantiate.transform.position = ourInteractable.transform.position + new Vector3(0, 1.4f, 0);
+                selectionIconInstantiate.SetActive(true);
+                var text = ourInteractable.GetItemName();
                 interactionInfoUi.transform.GetChild(0).GetComponent<TMP_Text>().text = text;
                 interactionInfoUi.SetActive(true);
-
                 EnableActionButton(1f);
             }
             else
             {
-
+                selectionIconInstantiate.SetActive(false);
                 EnableActionButton(0.5f);
                 interactionInfoUi.SetActive(false);
 
@@ -47,7 +68,7 @@ public class SelectionManager : MonoBehaviour
         }
         else
         {
-
+            selectionIconInstantiate.SetActive(false);
             EnableActionButton(0.5f);
             interactionInfoUi.SetActive(false);
 
@@ -61,7 +82,6 @@ public class SelectionManager : MonoBehaviour
     private void EnableActionButton(float cor)
     {
         Color currentColor = actionButton.transform.GetComponent<Image>().color;
-
 
         currentColor.a = cor;
 
