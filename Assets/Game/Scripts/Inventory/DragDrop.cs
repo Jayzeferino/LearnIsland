@@ -27,7 +27,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     {
 
         Debug.Log("OnBeginDrag");
-        canvasGroup.alpha = .6f;
+        canvasGroup.alpha = 1f;
         //So the ray cast will ignore the item itself.
         canvasGroup.blocksRaycasts = false;
         startPosition = transform.position;
